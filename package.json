@@ -1,0 +1,34 @@
+{
+  "name": "@spriteful/app-spinner",
+  "version": "1.0.0",
+  "description": "spinner which includes a cancel button that is displayed after a waitTime and options to set to full-screen",
+  "main": "app-spinner.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spriteful/app-spinner.git"
+  },
+  "author": "Spriteful spritefuldev@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/spriteful/app-spinner/issues"
+  },
+  "homepage": "https://github.com/spriteful/app-spinner#readme",
+  "dependencies": {
+    "@polymer/paper-button": "^3.0.1",
+    "@polymer/paper-spinner": "^3.0.1",
+    "@polymer/polymer": "^3.1.0",
+    "@spriteful/spriteful-element": "^1.0.4",
+    "@spriteful/utils": "^1.1.6"
+  },
+  "devDependencies": {
+    "@polymer/iron-demo-helpers": "^3.0.2",
+    "@polymer/test-fixture": "^4.0.2",
+    "@webcomponents/webcomponentsjs": "^2.2.7",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "wct-mocha": "^1.0.0"
+  }
+}

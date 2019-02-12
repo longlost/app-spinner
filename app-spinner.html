@@ -1,0 +1,61 @@
+
+<style>
+  
+  :host {
+    display:            none; /* set to grid in js */
+    grid-template-rows: minmax(48px, 1fr) minmax(min-content, 88px) minmax(48px, 1fr);
+    position:           fixed;
+    top:                0px;
+    left:               0px;
+    height:             100vh;
+    width:              100%;
+    background-color:   var(--app-background-color);
+    transition:         opacity 0.2s ease-in-out;
+    opacity:            0;
+  }
+
+  .message {
+    justify-self: center;
+    align-self:   end;
+    line-height:  1;
+    font-size:    16px;
+    transition:   opacity 0.1s ease-in-out, transform 0.2s ease-out;
+    opacity:      0;
+    transform:    translateY(-25%);
+  }
+
+  paper-spinner-lite {
+    place-self: center;
+    --paper-spinner-color: var(--spinner-color, var(--app-primary-color));
+  }
+
+  .btn-placeholder {
+    justify-self: center;
+    align-self:   start;
+    transition:   opacity 0.1s ease-in-out 0.1s, transform 0.2s ease-out 0.1s;
+    opacity:      0;
+    transform:    translateY(25%);
+  }
+
+  .animate {
+    opacity:   1;
+    transform: none;
+  }
+
+  paper-button {
+    margin:           0px;
+    color:            var(--spinner-cancel-button-color, white);
+    background-color: var(--spinner-cancel-button-background-color, var(--app-primary-color));
+  }
+
+</style>
+
+
+<div class$="message [[__computeAnimateMessage(message)]]">[[message]]</div>
+<paper-spinner-lite id="spinner"></paper-spinner-lite>
+<div class$="btn-placeholder [[__computeAnimateCancelBtn(message, timeoutMessage)]]">
+  <paper-button hidden="[[__computeHideCancelBtn(message, timeoutMessage)]]" 
+                on-click="__cancelButtonClicked">
+    cancel
+  </paper-button>
+</div>
