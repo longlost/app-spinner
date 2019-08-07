@@ -1,6 +1,6 @@
 {
   "name": "@spriteful/app-spinner",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "spinner which includes a cancel button that is displayed after a waitTime and options to set to full-screen",
   "main": "app-spinner.js",
   "scripts": {
