@@ -51,8 +51,12 @@
 </style>
 
 
-<div class$="message [[__computeAnimateMessage(message)]]">[[message]]</div>
+<div class$="message [[__computeAnimateMessage(message)]]">
+  [[message]]
+</div>
+
 <paper-spinner-lite id="spinner"></paper-spinner-lite>
+
 <div class$="btn-placeholder [[__computeAnimateCancelBtn(message, timeoutMessage)]]">
   <paper-button hidden="[[__computeHideCancelBtn(message, timeoutMessage)]]" 
                 on-click="__cancelButtonClicked">

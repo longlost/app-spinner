@@ -16,22 +16,22 @@
  
 
 import {
-  SpritefulElement, 
+  AppElement, 
   html
-}                 from '@spriteful/spriteful-element/spriteful-element.js';
+}                 from '@longlost/app-element/app-element.js';
 import {
   enableScrolling,
   getComputedStyle,
   listen, 
   schedule, 
   unlisten
-}                 from '@spriteful/utils/utils.js';
+}                 from '@longlost/utils/utils.js';
 import htmlString from './app-spinner.html';
 import '@polymer/paper-spinner/paper-spinner-lite.js';
 import '@polymer/paper-button/paper-button.js';
 
 
-class SpritefulAppSpinner extends SpritefulElement {
+class AppSpinner extends AppElement {
   static get is() { return 'app-spinner'; }
 
   static get template() {
@@ -130,7 +130,8 @@ class SpritefulAppSpinner extends SpritefulElement {
             }
             resolve();
           });
-        } else {
+        } 
+        else {
           reject('hide spinner transition was trampled');
         }
       });
@@ -172,4 +173,4 @@ class SpritefulAppSpinner extends SpritefulElement {
 
 }
 
-window.customElements.define(SpritefulAppSpinner.is, SpritefulAppSpinner);
+window.customElements.define(AppSpinner.is, AppSpinner);
