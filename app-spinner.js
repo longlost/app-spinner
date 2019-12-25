@@ -1,18 +1,31 @@
-/*
- * api
- *
- *   show(message) -> pass a string to be displayed above the spinner, 
- *                    returns a promise that is resolved after the entry transition
- * 
- *   hide() -> returns a promise that is resolved after the exit transition
- *       
- * 
- *  events:
- *    
- *     'spinner-canceled' -> when user clicks cancel button that is displayed after the waitTime expires
- *     
- *
- **/
+
+/**
+  *
+  * `app-spinner`
+  * 
+  *   Shows a message line, paper-spinner and a cancel paper-button depending on configuration.
+  *
+  *
+  *   @customElement
+  *   @polymer
+  *   @demo demo/index.html
+  *
+  *
+  *
+  *  Methods:
+  *
+  *   show(message) -> pass a string to be displayed above the spinner, 
+  *                    returns a promise that is resolved after the entry transition
+  * 
+  *   hide() -> returns a promise that is resolved after the exit transition
+  *       
+  * 
+  *  Events:
+  *    
+  *     'spinner-canceled' -> when user clicks cancel button that is displayed after the waitTime expires
+  *     
+  *
+  **/
  
 
 import {
@@ -22,9 +35,8 @@ import {
 import {
   enableScrolling,
   getComputedStyle,
-  listen, 
   schedule, 
-  unlisten
+  wait
 }                 from '@longlost/utils/utils.js';
 import htmlString from './app-spinner.html';
 import '@polymer/paper-spinner/paper-spinner-lite.js';
@@ -41,6 +53,8 @@ class AppSpinner extends AppElement {
 
   static get properties() {
     return {
+
+      allowScrolling: Boolean,
 
       cancelable: Boolean,
 
@@ -90,6 +104,7 @@ class AppSpinner extends AppElement {
 
 
   __fullScreenChanged(bool) {
+
     if (bool) {
       this.style.position = 'fixed';
       this.style.height   = '100vh';
@@ -104,38 +119,33 @@ class AppSpinner extends AppElement {
   async __cancelButtonClicked() {
     try {
       await this.clicked();
+
       window.clearTimeout(this._timeoutId);
+
       this.fire('spinner-canceled');
     }
     catch (error) { 
       if (error === 'click debounced') { return; }
-      console.log('__cancelButtonClicked error: ', error); 
+      console.log(error); 
     }
   }
 
 
-  hide() {
+  async hide() {
     if (getComputedStyle(this, 'opacity') === '0') { return; }
+
     this.style.opacity = '0';
-    return new Promise((resolve, reject) => {
-      listen(this, 'transitionend', (event, key) => {
-        if (event.propertyName !== 'opacity') { return; }
-        if (getComputedStyle(this, 'opacity') === '0') { 
-          window.requestAnimationFrame(() => {
-            this.$.spinner.active = false;
-            this.style.display    = 'none';
-            unlisten(key);
-            if (this.fullScreen) {
-              enableScrolling(true);
-            }
-            resolve();
-          });
-        } 
-        else {
-          reject('hide spinner transition was trampled');
-        }
-      });
-    });
+
+    await wait(250);
+
+    this.$.spinner.active = false;
+    this.style.display    = 'none';
+
+    if (this.fullScreen && !this.allowScrolling) {
+      enableScrolling(true);
+    }
+
+    return schedule();
   }
 
   
@@ -143,32 +153,26 @@ class AppSpinner extends AppElement {
     this.message          = message;
     this.$.spinner.active = true;
     this.style.display    = 'grid';
-    if (this.fullScreen) {
+
+    if (this.fullScreen && !this.allowScrolling) {
       enableScrolling(false);
     }
+
     await schedule();
+
     if (getComputedStyle(this, 'opacity') === '1') { return; }
+
     if (this.cancelable) {
       window.clearTimeout(this._timeoutId);
+
       this._timeoutId = window.setTimeout(() => {
         this.message = this.timeoutMessage;
       }, this.waitTime);
     }
+
     this.style.opacity = '1';
-    return new Promise((resolve, reject) => {
-      listen(this, 'transitionend', (event, key) => {
-        if (event.propertyName !== 'opacity') { return; }
-        if (getComputedStyle(this, 'opacity') === '1') {
-          window.requestAnimationFrame(() => {
-            unlisten(key);
-            resolve();
-          });
-        }
-        else {
-          reject('show spinner transition was trampled');
-        }
-      });
-    });
+
+    return wait(250);
   }
 
 }
