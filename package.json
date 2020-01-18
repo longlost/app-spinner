@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/longlost/app-spinner#readme",
   "dependencies": {
-    "@longlost/app-element": "^1.0.5",
+    "@longlost/app-element": "^1.0.6",
     "@longlost/utils": "^1.3.5",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-spinner": "^3.0.2",
@@ -26,9 +26,9 @@
   "devDependencies": {
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@polymer/test-fixture": "^4.0.2",
-    "@webcomponents/webcomponentsjs": "^2.4.0",
+    "@webcomponents/webcomponentsjs": "^2.4.1",
     "chai": "^4.2.0",
-    "mocha": "^6.2.2",
+    "mocha": "^7.0.0",
     "wct-mocha": "^1.0.1"
   }
 }
