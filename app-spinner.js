@@ -149,8 +149,12 @@ class AppSpinner extends AppElement {
   }
 
   
-  async show(message = '') {
-    this.message          = message;
+  async show(message) {
+
+    if (message) {
+      this.message = message;
+    }
+    
     this.$.spinner.active = true;
     this.style.display    = 'grid';
 
