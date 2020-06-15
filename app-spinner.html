@@ -13,6 +13,9 @@
     transition:         opacity 0.2s ease-in-out;
     opacity:            0;
     z-index:            1;
+    --spinner-cancel-button-background-color: var(--app-primary-color);
+    --spinner-cancel-button-color:            var(--app-primary-color-text, white);
+    --spinner-color:                          var(--app-primary-color);
   }
 
   .message {
@@ -27,7 +30,7 @@
 
   paper-spinner-lite {
     place-self: center;
-    --paper-spinner-color: var(--spinner-color, var(--app-primary-color));
+    --paper-spinner-color: var(--spinner-color);
   }
 
   .btn-placeholder {
@@ -45,8 +48,8 @@
 
   paper-button {
     margin:           0px;
-    color:            var(--spinner-cancel-button-color, white);
-    background-color: var(--spinner-cancel-button-background-color, var(--app-primary-color));
+    color:            var(--spinner-cancel-button-color);
+    background-color: var(--spinner-cancel-button-background-color);
   }
 
 </style>
