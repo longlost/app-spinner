@@ -31,13 +31,15 @@
 import {
   AppElement, 
   html
-}                 from '@longlost/app-element/app-element.js';
+} from '@longlost/app-core/app-element.js';
+
 import {
   enableScrolling,
   getComputedStyle,
   schedule, 
   wait
-}                 from '@longlost/utils/utils.js';
+} from '@longlost/app-core/utils.js';
+
 import htmlString from './app-spinner.html';
 import '@polymer/paper-spinner/paper-spinner-lite.js';
 import '@polymer/paper-button/paper-button.js';
