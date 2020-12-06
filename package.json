@@ -1,6 +1,6 @@
 {
   "name": "@longlost/app-spinner",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "spinner which includes a cancel button that is displayed after a waitTime and options to set to full-screen",
   "main": "app-spinner.js",
   "scripts": {
@@ -17,8 +17,7 @@
   },
   "homepage": "https://github.com/longlost/app-spinner#readme",
   "dependencies": {
-    "@longlost/app-element": "^2.0.0",
-    "@longlost/utils": "^1.5.0",
+    "@longlost/app-core": "^1.0.0",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-spinner": "^3.0.2",
     "@polymer/polymer": "^3.4.1"
@@ -26,9 +25,9 @@
   "devDependencies": {
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@polymer/test-fixture": "^4.0.2",
-    "@webcomponents/webcomponentsjs": "^2.4.3",
+    "@webcomponents/webcomponentsjs": "^2.5.0",
     "chai": "^4.2.0",
-    "mocha": "^8.0.1",
+    "mocha": "^8.2.1",
     "wct-mocha": "^1.1.0"
   }
 }
