@@ -28,10 +28,7 @@
   **/
  
 
-import {
-  AppElement, 
-  html
-} from '@longlost/app-core/app-element.js';
+import {AppElement} from '@longlost/app-core/app-element.js';
 
 import {
   enableScrolling,
@@ -40,16 +37,17 @@ import {
   wait
 } from '@longlost/app-core/utils.js';
 
-import htmlString from './app-spinner.html';
+import template from './app-spinner.html';
 import '@polymer/paper-spinner/paper-spinner-lite.js';
 import '@polymer/paper-button/paper-button.js';
 
 
 class AppSpinner extends AppElement {
+
   static get is() { return 'app-spinner'; }
 
   static get template() {
-    return html([htmlString]);
+    return template;
   }
   
 
@@ -91,16 +89,19 @@ class AppSpinner extends AppElement {
 
 
   __computeAnimateMessage(message) {
+
     return message ? 'animate' : '';
   }
 
 
   __computeAnimateCancelBtn(message, timeoutMessage) {
+
     return message !== timeoutMessage ? '' : 'animate';
   }
 
 
   __computeHideCancelBtn(message, timeoutMessage) {
+
     return message !== timeoutMessage;
   }
 
@@ -119,6 +120,7 @@ class AppSpinner extends AppElement {
 
 
   async __cancelButtonClicked() {
+
     try {
       await this.clicked();
 
@@ -134,6 +136,7 @@ class AppSpinner extends AppElement {
 
 
   async hide() {
+    
     if (getComputedStyle(this, 'opacity') === '0') { return; }
 
     this.style.opacity = '0';
